@@ -3,12 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>SOS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100%;
+            margin: 0;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 250px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #038bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #038bff;
+        }
+    </style>
 </head>
 <body>
-<img src="https://png.pngtree.com/element_our/md/20180314/md_5aa8fcee8b314.jpg" alt="">
+<img src="https://tltvietnam.vn/upload/images/mail-server-5.jpg" alt="" width="50px">
 <h1>Get the invite</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-<input type="">
-<button>REQUEST INVITE</button>
+<label>
+    <input type="text" id="idInput" placeholder="Enter Email">
+</label>
+<br>
+<button onclick="requestInvite()">REQUEST INVITE</button>
+<script>
+    function requestInvite() {
+        let email = document.getElementById("idInput").value;
+        if (email === "") {
+            alert("Please enter your email!");
+        } else {
+            alert("Your request has been sent, please check your email!");
+        }
+        document.getElementById("idInput").value = "";
+    }
+</script>
 </body>
 </html>
