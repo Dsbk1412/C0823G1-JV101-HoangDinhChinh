@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+    <style>
+        /* Style cho checkbox */
+        .styled-checkbox {
+            position: absolute; /* ẩn checkbox thật đi */
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* Style cho label */
+        .styled-checkbox + span:before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #aaa;
+            border-radius: 5px;
+        }
+
+        /* Style cho checkbox khi checked */
+        .styled-checkbox:checked + span:before {
+            background-color: #272882;
+            border-color: #272882;
+            content: "✓";
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+            line-height: 18px;
+        }
+    </style>
+</head>
+<body>
+<img src="https://james.codegym.vn/pluginfile.php/1/theme_remui/logo/1675179018/Codegym%20X.png" alt="Anh nen" style="width: 38%">
+<h3>Sign In</h3>
+<form>
+    <table style="width: 50%">
+        <tr>
+            <td>
+                <label>
+                    <input type="text" id="idEmail" placeholder="Username/ Email" style="width: 125%">
+                </label>
+                <br>
+                <br>
+                <label>
+                    <input type="password" id="idPassword" placeholder="Password" style="width: 125%">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="checkbox" id="idCheckbox" class="styled-checkbox"> <span>Remember Username</span>
+                </label>
+            </td>
+            <td>
+                <a href="https://james.codegym.vn/login/forgot_password.php">Forgot Password?</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Log in" style="width: 127%; background-color: #272882; color: white; height: 30px">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
