@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+</head>
+<body>
+<script>
+    let a = 3;
+    let b = 5;
+    let c = 2;
+    let d = 4;
+    let number = [];
+    number.push(a,b,c,d);
+    document.write("Dãy số đã cho là:" + number + "<br>");
+    let max = a;
+    let min = a;
+    // Tìm giá trị max
+    if (b > max){
+        max = b;
+    }
+    if (c > max){
+        max = c;
+    }
+    if (d > max){
+        max = d;
+    }
+    document.write("Giá trị lớn nhất là " + max + "<br>");
+    // Tìm giá trị min
+    if (b < min){
+        min = b;
+    }
+    if (c < min){
+        min = c;
+    }
+    if (d < min){
+        min = d;
+    }
+    document.write("Giá trị nhỏ nhất là " + min +"<br>");
+    // sắp xếp các giá trị theo thứ tự tăng dần
+    let number1 = number;
+    number1.sort((a, b) => a - b);
+    document.write("Thứ tự tăng dần trong dãy số trên là:" + number1 + "<br>");
+    // sắp xếp các giá trị theo thứ tự giảm dần
+    let number2 = number;
+    number2.sort((a, b) => b - a);
+    document.write("Thứ tự giảm dần trong dãy số trên là:" + number2);
+</script>
+</body>
+</html>

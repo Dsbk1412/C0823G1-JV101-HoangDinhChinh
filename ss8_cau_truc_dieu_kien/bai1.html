@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+</head>
+<body>
+<script>
+    let a = +prompt("Nhập độ dài cạnh a:");
+    let b = +prompt("Nhập độ dài cạnh b:");
+    let c = +prompt("Nhập độ dài cạnh c:");
+    if (a + b > c && a + c > b && b + c > a) {
+        if ( (a * a + b * b === +(c * c)) ||(a * a + c * c === +(b*b)) || (b * b + c * c === +(a * a))) {
+            if (a === b || a === c || b === c) {
+                alert("tam giác vuông cân");
+            } else {
+                alert("tam giác vuông không cân");
+            }
+        }else{
+            alert("tam giác thường");
+        }
+    } else {
+        alert("không phải 3 cạnh của tam giác");
+    }
+</script>
+</body>
+</html>
