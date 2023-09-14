@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SOS</title>
+    <meta charset="UTF-8">
+    <title>SOS</title>
     <style>
         body {
-            background-color: #f7f7f7;
+            background-color: #48170f;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 16px;
             line-height: 1.5em;
@@ -13,29 +13,29 @@
             padding: 0;
         }
 
-        h1 {
-            color: #ffffff;
-            background-color: #1f030c;
-            text-align: center;
-            font-size: 32px;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 20px; /* Thêm dòng này để tạo khoảng cách */
-            font-family: Times New Roman, serif;
-        }
+        /*h1 {*/
+        /*    color: #ffffff;*/
+        /*    background-color: #1f030c;*/
+        /*    text-align: center;*/
+        /*    font-size: 32px;*/
+        /*    font-weight: bold;*/
+        /*    margin-top: 20px;*/
+        /*    margin-bottom: 20px; !* Thêm dòng này để tạo khoảng cách *!*/
+        /*    font-family: Times New Roman, serif;*/
+        /*}*/
 
-        p {
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
+        /*p {*/
+        /*    color: #666;*/
+        /*    font-size: 18px;*/
+        /*    margin-bottom: 10px;*/
+        /*    text-align: center;*/
+        /*}*/
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-            text-align: center;
-        }
+        /*label {*/
+        /*    display: block;*/
+        /*    margin-bottom: 10px;*/
+        /*    text-align: center;*/
+        /*}*/
 
         input[type="number"],
         select {
@@ -72,60 +72,103 @@
             margin-top: 20px;
             font-size: 24px;
             text-align: center;
-            box-shadow: 2px 2px 5px #ccc;
+        }
+        .button{
+            height: 40px;
+            width: 200px;
+            color: white;
+            background-color: #ac133a
+        }
+        .select{
+            height: 50px;
+            width: 200px;
+        }
+        .head{
+            background-color: black;
+            color: white;
+            width: 300px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+        }
+        .table{
+            margin: 12px 40% 40%;
+            border-radius: 20px;
         }
     </style>
 </head>
 <body>
-<h1>TIP CALCULATOR</h1>
-<p>How much was your bill?</p>
-    <label>
-        <span style="display: inline-block; margin-left: 5px;">$</span>
-        <input type="number" id="dollar">
-    </label>
-<p>How was your service?</p>
-<label>
-    <select name=" " class="service"  id="service" style="width: 20% ; height: 50px">
-        <option value="30">30% - Outstanding</option>
-        <option value="20">20% - Good</option>
-        <option value="15">15% - It was OK</option>
-        <option value="10">10% - BAD</option>
-        <option value="5">5% - Terrible</option>
-    </select>
-</label>
-<p>How many people are sharing the bill?</p>
-
-    <label>
-        <input type="number" id="people">
-        <span style="display: inline-block; margin-left: 5px;">People</span>
-    </label>
-<br>
-<div style="text-align: center;">
-    <button onclick="Calculate()">CALCULATE!</button>
-</div>
-<div id="tip"></div>
+<table cellspacing="0" cellpadding="10" bgcolor="white" class="table">
+    <tr>
+        <td class="head">TIP CALCULATOR</td>
+    </tr>
+    <tr>
+        <td>How much was your bill?</td>
+    </tr>
+    <tr>
+        <td>
+            $<label for="dollar"></label><input type="number" id="dollar">
+        </td>
+    </tr>
+    <tr>
+        <td>How was your service?</td>
+    </tr>
+    <tr>
+        <td>
+            <label for="service"></label><select class="select" id="service">
+            <option value="30">30% - Outstanding</option>
+            <option value="20">20% - Good</option>
+            <option value="15">15% - It was OK</option>
+            <option value="10">10% - BAD</option>
+            <option value="5">5% - Terrible</option>
+        </select>
+        </td>
+    </tr>
+    <tr>
+        <td>How many people are sharing the bill?</td>
+    </tr>
+    <tr>
+        <td>
+            <label for="people"></label><input type="number" id="people"> people
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <button onclick="calculate()" class="button">CALCULATE</button>
+        </th>
+    </tr>
+    <tr>
+        <th>TIP AMOUNT</th>
+    </tr>
+    <tr>
+        <th id="tip"></th>
+    </tr>
+    <tr>
+        <th>each</th>
+    </tr>
+</table>
 <script>
-    function Calculate(){
+    function calculate() {
         let bill = +document.getElementById("dollar").value;
         let serviceQuality = +document.getElementById("service").value;
         let people = +document.getElementById("people").value;
         let result;
-        if (serviceQuality === 30){
+        if (serviceQuality === 30) {
             result = bill * 0.3 / people;
-            document.getElementById("tip").innerHTML = "TIP AMOUNT" + '<br>' + "$ " + result + ".00" + '<br>' + "each";
-        } else if (serviceQuality === 20){
+            document.getElementById("tip").innerHTML = "$ " + result + ".00";
+        } else if (serviceQuality === 20) {
             result = bill * 0.2 / people;
-            document.getElementById("tip").innerHTML = "TIP AMOUNT" + '<br>' + "$ " + result + ".00" + '<br>' + "each";
-        } else if (serviceQuality === 15){
+            document.getElementById("tip").innerHTML = "$ " + result + ".00";
+        } else if (serviceQuality === 15) {
             result = bill * 0.15 / people;
-            document.getElementById("tip").innerHTML = "TIP AMOUNT" + '<br>' + "$ " + result + ".00" + '<br>' + "each";
-        } else if (serviceQuality === 10){
+            document.getElementById("tip").innerHTML = "$ " + result + ".00";
+        } else if (serviceQuality === 10) {
             result = bill * 0.1 / people;
-            document.getElementById("tip").innerHTML = "TIP AMOUNT" + '<br>' + "$ " + result + ".00" + '<br>' + "each";
-        } else if (serviceQuality === 5){
+            document.getElementById("tip").innerHTML = "$ " + result + ".00";
+        } else if (serviceQuality === 5) {
             result = bill * 0.05 / people;
-            document.getElementById("tip").innerHTML = "TIP AMOUNT" + '<br>' + "$ " + result + ".00" + '<br>' + "each";
-    }}
+            document.getElementById("tip").innerHTML = "$ " + result + ".00";
+        }
+    }
 </script>
 </body>
 </html>
