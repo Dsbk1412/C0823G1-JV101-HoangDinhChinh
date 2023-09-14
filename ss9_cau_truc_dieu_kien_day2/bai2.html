@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+    <style>
+        body{
+            font-family: 'Open Sans', sans-serif;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let wage = +prompt("Nhập lương nhân viên:");
+    let hour = +prompt("Nhập giờ làm việc của nhân viên trong tháng");
+    let sum;
+    let bonus;
+    document.write("Số giờ bạn làm là: " + hour + " giờ" + "<br>");
+    document.write("Tiền lương tháng này của bạn là: " + wage + "VNĐ" + "<br>");
+    if (hour >= 100 && hour < 200){
+        bonus = wage * 10 / 100
+        document.write("Tiền thưởng tháng này của bạn là: " + bonus + "VNĐ" + "<br>");
+        sum = wage + bonus;
+        document.write("Tổng tiền lương và thưởng của bạn là: " + sum + "VNĐ" + "<br>");
+    } else if (hour >= 200){
+        bonus = wage * 20 / 100
+        document.write("Tiền thưởng tháng này của bạn là: " + bonus + "VNĐ" + "<br>");
+        sum = wage + bonus;
+        document.write("Tổng tiền lương và thưởng của bạn là: " + sum + "VNĐ" + "<br>");
+    } else {
+        document.write("Có làm thì mới có ăn!!!");
+    }
+</script>
+</body>
+</html>

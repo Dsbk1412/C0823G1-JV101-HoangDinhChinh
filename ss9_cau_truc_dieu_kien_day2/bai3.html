@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+</head>
+<body>
+<script>
+    let totalModule = +prompt("Nhập tổng số buổi của Module:");
+    let absent = +prompt("Nhập số buổi vắng nghỉ:");
+    if (absent/totalModule * 100 >= 10 && absent/totalModule * 100 < 20){
+        alert("Mail Warning đã được gửi đến bạn!!!");
+    } else if (absent/totalModule * 100 >= 20){
+        alert("Bạn bị buộc chuyển lớp vì vắng nghỉ quá nhiều!!!");
+    } else {
+        alert("Bạn vẫn trong vùng an toàn!!!");
+    }
+</script>
+</body>
+</html>
