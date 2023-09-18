@@ -2,31 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bài 2</title>
+    <title>SOS</title>
     <style>
-        /*CSS CLOCK*/
-        .clock {
-            font-size: 3em;
-            text-align: center;
-            margin-top: 50px;
-            position: absolute;
-            top: -50px;
-            left: 43%;
-            z-index: 1;
-        }
-        #time {
-            font-weight: bold;
-            letter-spacing: 5px;
-            color: #5470e0;
-        }
-        #date {
-            margin-top: 20px;
-            font-size: 0.5em;
-            letter-spacing: 3px;
-            color: #5470e0;
-            text-shadow: #5470e0;
-        }
-        /*CSS BUTTON*/
         .btn-76,
         .btn-76 *,
         .btn-76 :after,
@@ -145,11 +122,32 @@
             margin: 200px 45% 45%;
             position: relative;
         }
-        /*CSS IMG*/
+        .clock {
+            font-size: 3em;
+            text-align: center;
+            margin-top: 50px;
+            position: absolute;
+            top: -50px;
+            left: 43%;
+            z-index: 1;
+        }
+        #time {
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: #5470e0;
+        }
+        #date {
+            margin-top: 20px;
+            font-size: 0.5em;
+            letter-spacing: 3px;
+            color: #5470e0;
+            text-shadow: #5470e0;
+        }
     </style>
+    <link rel="stylesheet" href="CSSBUTTON.css">
+    <link rel="stylesheet" href="CSSClock.css">
 </head>
-<body>
-<!--BUTTON-->
+<body style="background: url(background.jpg); background-size: 100%">
 <button class="btn-76 button" onclick="testButton()">
     <span class="top"></span>
     <span class="right"></span>
@@ -157,17 +155,11 @@
     <span class="left"></span>
     Click me
 </button>
-
-<!--CLOCK-->
 <div class="clock">
     <p id="date"></p>
     <p id="time"></p>
 </div>
-
-<!--IMG-->
-
 <script>
-    //Function BUTTON
     function testButton(){
         alert("Tò mò bấm vào làm gì vậy ???");
         alert("Đọc thông báo vừa rồi làm gì nữa vậy ???");
@@ -175,7 +167,6 @@
         let audio = new Audio("NgheNhuTinhYeu-HIEUTHUHAI-7045493.mp3");
         audio.play();
     }
-    //Function CLOCK
     const WEEK = ["SUN", "MON","TUE","WED","THU","FRI","SAT"];
     function updateTime(){
         let now = new Date();
@@ -195,5 +186,6 @@
         return String(num).padStart(digit, '0');
     }
 </script>
+
 </body>
 </html>

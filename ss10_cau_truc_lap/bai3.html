@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+</head>
+<body>
+<script>
+    let number;
+    do {
+        do {
+            number = +prompt("Nhập vào số để kiểm tra:");
+            if (isNaN(number) === false && number > 0) {
+                break;
+            } else {
+                alert("Vui lòng nhập lại số để kiểm tra!!!");
+            }
+        } while (true)
+
+        function check(number) {
+            let c = 0;
+            for (let i = 1; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) {
+                    c++;
+                }
+            }
+            if (number < 2) {
+                return false;
+            }
+            return c < 2;
+        }
+
+        if (check(number)) {
+            alert("Số bạn nhập là số nguyên tố ");
+            break;
+        } else {
+            alert("Số bạn nhập không phải là số nguyên tố vui lòng thử lại  số khác");
+        }
+    } while (true)
+</script>
+</body>
+</html>

@@ -6,16 +6,24 @@
 </head>
 <body>
 <script>
-    let N;
-    do {
-        N = +prompt("Nhập số để kiểm tra có thỏa mãn điều kiện hay không:");
-        if (N > 0 && N < 100){
-            alert("Số bạn nhập thỏa mãn điều kiện");
-            break;
-        } else {
-            alert("Bạn đã nhập sai điều kiện,vui lòng nhập lại");
-        }
-    } while (true)
+   let child;
+   let dad;
+   let year = 0;
+   while (true) {
+       child = +prompt("Nhập vào tuổi con:");
+       dad = +prompt("Nhập vào tuổi cha:");
+       if (child > (dad - 25) || isNaN(child)) {
+           alert("Yêu cầu nhập lại, tuổi cha phải lớn hơn tuổi con ít nhất 25 tuổi!!!");
+           continue;
+       }
+       break;
+   }
+   while (dad > child * 2){
+       dad = dad + 1;
+       child = child + 1;
+       year = year + 1;
+   }
+   alert("Tuổi cha gấp đôi tuổi con sau " + year + " năm");
 </script>
 </body>
 </html>

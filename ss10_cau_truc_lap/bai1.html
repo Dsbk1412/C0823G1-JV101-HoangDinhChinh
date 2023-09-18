@@ -5,12 +5,42 @@
     <title>SOS</title>
 </head>
 <body>
+<h1>Find Second Number in Array</h1>
+<p>myArray = [5, 2, 10, 7, 3, 8]</p>
+
+<p>
+    <button onclick="findSecondNumber()">Find Second Number</button>
+</p>
+
+<p id="output"></p>
+
 <script>
-    let number = 50;
-    for (let i = 0; i < 2023; i++){
-        number += i;
+    function findSecondNumber() {
+        // Khởi tạo một mảng bất kỳ
+        let myArray = [5, 2, 10, 7, 3, 8];
+
+        // Sử dụng một biến để lưu giá trị của số lớn nhất
+        let largestNumber = 0;
+
+        // Sử dụng một biến để lưu giá trị của số lớn nhất thứ hai
+        let secondLargestNumber = 0;
+
+        // Lặp qua mảng và tìm số lớn nhất và số lớn nhất thứ hai
+        for (let i = 0; i < myArray.length; i++) {
+            // Tìm số lớn nhất
+            if (myArray[i] > largestNumber) {
+                secondLargestNumber = largestNumber;
+                largestNumber = myArray[i];
+            } // Nếu không phải số lớn nhất thì kiểm tra xem có phải số lớn nhất thứ hai không
+            else if (myArray[i] > secondLargestNumber && myArray[i] !== largestNumber) {
+                secondLargestNumber = myArray[i];
+            }
+        }
+
+        // Hiển thị kết quả
+        let outputParagraph = document.getElementById("output");
+        outputParagraph.innerHTML = "The largest number in the array is: " + largestNumber + "<br>" + "The second largest number in the array is: " + secondLargestNumber;
     }
-    document.write("Số thứ 2023 là: " + number);
 </script>
 </body>
 </html>
