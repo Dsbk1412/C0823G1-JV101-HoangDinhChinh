@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+</head>
+
+<body>
+<script>
+    let length;
+    let number = [];
+
+    do {
+        length = +prompt("Nhập độ dài của mảng");
+        for (let i = 0; i < length; i++) {
+            let x = +prompt("Nhập giá trị của mảng " + (i + 1));
+            if (isNaN(x) === false) {
+                number.push(x);
+            } else {
+                alert("Vui lòng nhập lại giá trị");
+                i--;
+            }
+        }
+        if (isNaN(length) === false && length > 0) {
+            break;
+        } else {
+            alert("Vui lòng nhập số");
+        }
+    } while (true)
+
+    document.write("Giá trị bạn vừa thêm là: " + number + "<br>");
+
+    let sum = 0;
+    for (let i = 1; i < number.length; i = i + 2) {
+        if (number[i] % 2 === 0) {
+            sum += number[i];
+        }
+    }
+
+    document.write("Tổng các số chẵn ở vị trí lẻ là: " + sum);
+</script>
+</body>
+
+</html>

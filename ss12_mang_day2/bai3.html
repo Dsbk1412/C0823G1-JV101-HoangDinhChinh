@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+</head>
+<body>
+<script>
+    let length;
+    let arr = [];
+    do {
+        length = +prompt("Nhập độ dài của mảng:");
+        if (isNaN(length) === false && length > 0){
+            break;
+        } else {
+            alert("Vui lòng nhập lại!!!");
+        }
+    } while (true)
+    for (let i = 0; i < length; i++){
+        let num;
+        do {
+            num= prompt("Nhập giá trị thứ " + (i + 1) + " của mảng");
+        }while (arr.includes(num))
+        arr.push(num);
+    }
+    document.write("Mảng vừa nhập là: " + arr);
+</script>
+</body>
+</html>
