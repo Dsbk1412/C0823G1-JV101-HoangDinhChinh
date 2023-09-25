@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #eee;
+        }
+
+        p {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Kiểm tra tam giác</h1>
+<form>
+    <label for="side1">Cạnh thứ 1:</label>
+    <input type="number" id="side1" name="side1" required>
+
+    <label for="side2">Cạnh thứ 2:</label>
+    <input type="number" id="side2" name="side2" required>
+
+    <label for="side3">Cạnh thứ 3:</label>
+    <input type="number" id="side3" name="side3" required>
+
+    <button type="submit">Kiểm tra</button>
+</form>
+
+<script>
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const x = +document.querySelector("#side1").value;
+        const y = +document.querySelector("#side2").value;
+        const z = +document.querySelector("#side3").value;
+
+        function checkTriangle(x, y, z) {
+            // Kiểm tra x, y, z là 3 số dương khác 0
+            if (x <= 0 || y <= 0 || z <= 0) {
+                return "Không phải cạnh tam giác";
+            }
+
+            // Kiểm tra x, y, z là 3 cạnh của tam giác vuông
+            if (x * x + y * y === z * z || x * x + z * z === y * y || z * z + y * y === x * x) {
+                return "Là ba cạnh của tam giác vuông";
+            }
+
+            // Kiểm tra x, y, z là 3 cạnh của tam giác thường
+            if (x + y > z && x + z > y && y + z > x) {
+                return "Là ba cạnh của một tam giác";
+            }
+
+            // Nếu không phải tam giác thì trả về "Không phải cạnh tam giác"
+            return "Không phải cạnh tam giác";
+        }
+
+        document.querySelector("p").textContent = `Giá trị bạn vừa nhập: ${checkTriangle(x, y, z)}`;
+    })
+</script>
+<p></p>
+</body>
+</html>

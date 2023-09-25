@@ -6,29 +6,54 @@
 </head>
 <body>
 <script>
+    // let length;
+    // let number=[];
+    // do {
+    //     length = +prompt("Nhập độ dài của mảng");
+    //     for (let i = 0; i < length; i++) {
+    //         let x = +prompt("Nhập giá trị của mảng " + (i + 1));
+    //         if (isNaN(x)===false){
+    //             number.push(x);
+    //         }else {
+    //             alert("Vui lòng nhập lại giá trị");
+    //             i--;
+    //         }
+    //     }
+    //     if (isNaN(length) === false  && length > 0 ) {
+    //         break;
+    //     } else {
+    //         alert("Vui lòng nhập số");
+    //     }
+    // } while (true)
+    // document.write("Giá trị bạn vừa thêm là: " + number)
+    // if (length % 2 === 0) {
+    //     alert("OK");
+    // }else {
+    //     alert("NO");
+    // }
     let length;
-    let number=[];
+    let number = [];
     do {
         length = +prompt("Nhập độ dài của mảng");
-        for (let i = 0; i < length; i++) {
-            let x = +prompt("Nhập giá trị của mảng " + (i + 1));
-            if (isNaN(x)===false){
-                number.push(x);
-            }else {
-                alert("Vui lòng nhập lại giá trị");
-                i--;
-            }
+        for (let i = 0; i < length; i++){
+           let x = +prompt("Nhập giá trị của mảng " + (i + 1));
+           if (isNaN(x) === false){
+               number.push(x);
+           } else {
+               alert("Vui lòng nhập lại!!!");
+               i--;
+           }
         }
-        if (isNaN(length) === false  && length > 0 ) {
+        if (isNaN(length) === false && length > 0){
             break;
         } else {
-            alert("Vui lòng nhập số");
+            alert("Vui lòng nhập số!!!");
         }
     } while (true)
-    document.write("Giá trị bạn vừa thêm là: " + number)
-    if (length % 2 === 0) {
+    document.write("Giá trị bạn vừa thêm là: " + number);
+    if (length % 2 === 0){
         alert("OK");
-    }else {
+    } else {
         alert("NO");
     }
 </script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+</head>
+<body>
+<script>
+    function findMaxNumber(n) {
+        // Kiểm tra có đúng 4 chữ số
+        if (n < 1000 || n >= 10000) {
+            return -1;
+        }
+
+        // Chuyển n thành chuỗi để có thể lấy chỉ số các chữ số
+        const nString = n.toString();
+
+        // Tìm Max bằng cách xóa một chữ số
+        let max = -1;
+        for (let i = 0; i < 4; i++) {
+            const current = Number(nString.slice(0, i) + nString.slice(i + 1));
+            max = Math.max(max, current);
+        }
+
+        // Trả về số lớn nhất
+        return max;
+    }
+
+    // Ví dụ
+    console.log(findMaxNumber(1923)); // expected output: 923
+    console.log(findMaxNumber(9371)); // expected output: 971
+    console.log(findMaxNumber(923)); // expected output: -1
+  // let number;
+  // do {
+  //   number = +prompt("Nhập số bất kì");
+  //   if (isNaN(number) === false) {
+  //     break;
+  //   } else {
+  //     alert("Nhập lại số");
+  //   }
+  // } while (true)
+  //
+  // function findMaxNumber(number) {
+  //   let max = 0;
+  //   let current;
+  //   number = number.toString();
+  //   console.log(number);
+  //   if (number > 1000 && number < 10000) {
+  //     for (let i = 0; i < number.length; i++) {
+  //       current = Number(number.slice(0, i) + number.slice(i + 1));
+  //       if (max < current) {
+  //         max = current;
+  //       }
+  //       console.log(current);
+  //     }
+  //     console.log("Max: " + max);
+  //   } else {
+  //     return -1;
+  //   }
+  // }
+  // console.log(findMaxNumber(number));
+</script>
+</body>
+</html>

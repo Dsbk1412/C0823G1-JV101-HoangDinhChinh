@@ -6,25 +6,62 @@
 </head>
 <body>
 <script>
+    // let m;
+    // let n;
+    // let arr = [];
+    // do {
+    //     m = +prompt("Nhập vào hàng");
+    //     n = +prompt("Nhập vào cột:");
+    //     if (isNaN(m) === false && isNaN(n) === false && m > 0 && n > 0) {
+    //         break;
+    //     } else {
+    //         alert("Vui lòng nhập lại bằng số");
+    //     }
+    // } while (true)
+    // for (let i = 0; i < m; i++){
+    //     arr[i] = [];
+    //     for (let j = 0; j < n; j++){
+    //         arr[i][j] = +prompt("Nhập giá trị thứ: " + (j + 1) + " của mảng " + (i + 1));
+    //     }
+    // }
+    // document.write("Giá trị bạn vừa thêm là:");
+    // for (let i = 0; i < m; i++){
+    //     document.write("<br>");
+    //     for (let j = 0; j < n; j++){
+    //         document.write(arr[i][j] + " ");
+    //     }
+    // }
+    // let sum = 0;
+    // for(let i = 0; i < m; i++) {
+    //     for(let j = 0; j < n; j++) {
+    //         if(i === j) {
+    //             sum += arr[i][j];
+    //         }
+    //         if (j === arr.length - 1 -i){
+    //             sum += arr[i][j];
+    //         }
+    //     }
+    // }
+    // document.write("<br>" + "Tổng 2 đường chéo nhau là : " + sum);
     let m;
     let n;
     let arr = [];
     do {
         m = +prompt("Nhập vào hàng");
-        n = +prompt("Nhập vào cột:");
-        if (isNaN(m) === false && isNaN(n) === false && m > 0 && n > 0) {
+        n = +prompt("Nhập vào cột");
+        if (isNaN(m) === false && isNaN(n) === false && m > 0 && n > 0){
             break;
         } else {
-            alert("Vui lòng nhập lại bằng số");
+            alert("Vui lòng nhập lại");
         }
     } while (true)
     for (let i = 0; i < m; i++){
         arr[i] = [];
-        for (let j = 0; j < n; j++){
-            arr[i][j] = +prompt("Nhập giá trị thứ: " + (j + 1) + " của mảng " + (i + 1));
+        for ( let j = 0; j < n; j++){
+            arr[i][j] = +prompt("Nhập giá trị thứ " + (j + 1) + " của mảng" + (i + 1));
         }
     }
-    document.write("Giá trị bạn vừa thêm là:");
+    document.write("Giá trị bạn vừa thêm là: ");
     for (let i = 0; i < m; i++){
         document.write("<br>");
         for (let j = 0; j < n; j++){
@@ -32,17 +69,17 @@
         }
     }
     let sum = 0;
-    for(let i = 0; i < m; i++) {
-        for(let j = 0; j < n; j++) {
-            if(i === j) {
+    for (let i = 0; i < m; i++){
+        for (let j = 0; j < n; j++){
+            if (i === j){
                 sum += arr[i][j];
             }
-            if (j === arr.length - 1 -i){
+            if (j === arr.length - 1 - i){
                 sum += arr[i][j];
             }
         }
     }
-    document.write("<br>" + "Tổng 2 đường chéo nhau là : " + sum);
+    document.write("<br>" + "Tổng 2 đường chéo nhau là: " + sum);
 </script>
 </body>
 </html>

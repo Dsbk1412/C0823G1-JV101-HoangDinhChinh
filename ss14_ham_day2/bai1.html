@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+</head>
+<body>
+<script>
+    let length;
+    let number = [];
+    do {
+        length = +prompt("Nhập độ dài của mảng");
+        for (let i = 0; i < length; i++) {
+            let x = +prompt("Nhập giá trị thứ " + (i + 1) + " của mảng");
+            if (isNaN(x)===false){
+                number.push(x);
+            }else {
+                alert("Vui lòng nhập lại giá trị này của mảng");
+                i--;
+            }
+        }
+        if (isNaN(length) === false && length > 0) {
+            break;
+        } else {
+            alert("Vui lòng nhập lại");
+        }
+    } while (true);
+
+    let result = true
+    let sum = number[1] - number[0];
+    debugger;
+    for (let i = 0; i < number.length - 1; i++) {
+        if (number[i] + sum !== number[i + 1]) {
+            result = false;
+            break;
+        }
+    }
+    if (result === true) {
+        alert("OK");
+    } else {
+        alert("NO");
+    }
+</script>
+</body>
+</html>

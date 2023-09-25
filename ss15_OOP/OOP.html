@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SOS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Quản lý tài khoản ngân hàng ABC</h1>
+<form>
+    <fieldset>
+        <legend>Tạo tài khoản mới</legend>
+        <label for="accountNumber">Số tài khoản:</label>
+        <input type="text" id="accountNumber" name="accountNumber" required>
+
+        <label for="accountName">Tên tài khoản:</label>
+        <input type="text" id="accountName" name="accountName" required>
+
+        <label for="initialBalance">Số tiền ban đầu:</label>
+        <input type="number" id="initialBalance" name="initialBalance" min="0" required>
+
+        <button type="submit" id="createAccount">Tạo tài khoản mới</button>
+    </fieldset>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Số tài khoản</th>
+        <th>Tên tài khoản</th>
+        <th>Số dư</th>
+        <th>Nạp tiền</th>
+        <th>Rút tiền</th>
+    </tr>
+    </thead>
+    <tbody id="accountsTable">
+    </tbody>
+</table>
+
+<script>
+    class Account {
+        constructor(accountNumber, accountName, balance) {
+            this.accountNumber = accountNumber;
+            this.accountName = accountName;
+            this.balance = balance;
+        }
+
+        // Getter and setter for account number
+        get accountNumber() {
+            return this._accountNumber;
+        }
+
+        set accountNumber(value) {
+            this._accountNumber = value;
+        }
+
+        // Getter and setter for account name
+        get accountName() {
+            return this._accountName;
+        }
+
+        set accountName(value) {
+            this._accountName = value;
+        }
+
+        // Getter and setter for balance
+        get balance() {
+            return this._balance;
+        }
+
+        set balance(value) {
+            this._balance = value;
+        }
+
+        // Thêm tiền vào số dư tài khoản
+        deposit(amount) {
+            if (amount > 0) {
+                this.balance += amount;
+                console.log(`Nạp ${amount} vào tài khoản #${this.accountNumber}.`);
+                return true;
+            } else {
+                console.log("Số tiền không hợp lệ, vui lòng nhập số dương.");
+                return false;
+            }
+        }
+
+        // Rút tiền từ số dư tài khoản
+        withdraw(amount) {
+            if (amount > 0 && amount <= this.balance) {
+                this.balance -= amount;
+                alert(`Rút ${amount} từ tài khoản #${this.accountNumber}.`);
+                return true;
+            } else {
+                if (amount <= 0) {
+                    alert("Số tiền không hợp lệ, vui lòng nhập số dương.");
+                } else {
+                    console.log(`Rút ${amount} thất bại, tài khoản #${this.accountNumber} chỉ còn ${this.balance}.`);
+                }
+                return false;
+            }
+        }
+
+        // Chuyển đổi tài khoản sang định dạng chuỗi
+        toString() {
+            return `Account #${this.accountNumber} - ${this.accountName}: ${this.balance.toLocaleString()} VND`;
+        }
+    }
+
+    // Dùng biến để lưu trữ danh sách tài khoản
+    const accounts = [];
+
+    // Tạo danh sách tài khoản ban đầu
+    accounts.push(new Account(6868, "Hoang Dinh Chinh", 5000000));
+    accounts.push(new Account(3979, "Hoang Khanh Nam", 10000000));
+
+    // Lấy thẻ tbody của bảng
+    const accountsTableBody = document.querySelector("#accountsTable");
+
+    // Hiển thị tất cả các tài khoản trong danh sách lên bảng
+    function displayAccounts() {
+        // Xóa hết dữ liệu cũ trong thẻ tbody
+        accountsTableBody.innerHTML = "";
+
+        // Lặp qua từng tài khoản trong danh sách và thêm mới từng dòng vào bảng
+        accounts.forEach(account => {
+            const tr = document.createElement("tr");
+            const td1 = document.createElement("td");
+            td1.textContent = account.accountNumber;
+            const td2 = document.createElement("td");
+            td2.textContent = account.accountName;
+            const td3 = document.createElement("td");
+            td3.textContent = account.balance.toLocaleString() + " VND";
+            const td4 = document.createElement("td");
+            const depositButton = document.createElement("button");
+            depositButton.textContent = "Nạp tiền";
+            depositButton.addEventListener("click", function () {
+                const amount = +prompt(`Nhập số tiền cần nạp cho tài khoản ${account.accountNumber}:`);
+                account.deposit(amount);
+                displayAccounts();
+            });
+            td4.appendChild(depositButton);
+            const td5 = document.createElement("td");
+            const withdrawButton = document.createElement("button");
+            withdrawButton.textContent = "Rút tiền";
+            withdrawButton.addEventListener("click", function () {
+                const amount = +prompt(`Nhập số tiền cần rút cho tài khoản ${account.accountNumber}:`);
+                if (account.withdraw(amount)) {
+                    displayAccounts();
+                } else {
+                    alert(`Rút tiền thất bại. Tài khoản #${account.accountNumber} chỉ còn ${account.balance}.`);
+                }
+            });
+            td5.appendChild(withdrawButton);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            tr.appendChild(td5);
+            accountsTableBody.appendChild(tr);
+        });
+    }
+
+    // Hiển thị danh sách tài khoản ban đầu
+    displayAccounts();
+
+    // Bắt sự kiện khi người dùng tạo tài khoản mới
+    const createAccountForm = document.querySelector("form");
+    createAccountForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Lấy thông tin tài khoản mới từ form
+        const accountNumber = +document.querySelector("#accountNumber").value;
+        const accountName = document.querySelector("#accountName").value;
+        const initialBalance = +document.querySelector("#initialBalance").value;
+
+        // Kiểm tra số tài khoản mới không trùng với số tài khoản đã tồn tại
+        const existingAccount = accounts.find(account => {
+            return account._accountNumber === accountNumber;
+        });
+        if (existingAccount) {
+            alert(`Số tài khoản ${accountNumber} đã tồn tại trong hệ thống. Vui lòng nhập một số tài khoản khác.`);
+        } else { // noinspection JSCheckFunctionSignatures
+            if (/^\d+$/.test(accountNumber) === false) {
+                        alert("Số tài khoản không hợp lệ. Vui lòng nhập số tài khoản là một chuỗi số.");
+                    } else {
+                        // Thêm tài khoản mới vào danh sách và hiển thị lại danh sách tài khoản
+                        accounts.push(new Account(accountNumber, accountName, initialBalance));
+                        displayAccounts();
+
+                        // Thông báo trên màn hình khi tạo tài khoản mới thành công
+                        alert(`Tạo tài khoản mới thành công. Số tài khoản: ${accountNumber}, tên tài khoản: ${accountName}, số dư ban đầu: ${initialBalance} VND.`);
+
+                        // Xóa nội dung trong form để người dùng nhập tài khoản mới
+                        document.querySelector("#accountNumber").value = "";
+                        document.querySelector("#accountName").value = "";
+                        document.querySelector("#initialBalance").value = "";
+                    }
+        }
+    });
+</script>
+</body>
+
+</html>
